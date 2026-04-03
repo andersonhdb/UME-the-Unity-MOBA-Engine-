@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 
-namespace UME.Camera
+namespace UME.umeCamera
 {
     /// <summary>
     /// Controls the top-down Cinemachine camera for the main game view.

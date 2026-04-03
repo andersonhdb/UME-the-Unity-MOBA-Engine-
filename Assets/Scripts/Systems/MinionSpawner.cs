@@ -40,8 +40,8 @@ namespace UME.Systems
         private bool isActive;
 
         // Track handles so they can be released when minions are destroyed.
-        private Dictionary<GameObject, AsyncOperationHandle<GameObject>> spawnHandles
-            = new Dictionary<GameObject, AsyncOperationHandle<GameObject>>();
+        //private Dictionary<GameObject, AsyncOperationHandle<GameObject>> spawnHandles
+        //    = new Dictionary<GameObject, AsyncOperationHandle<GameObject>>();
 
         private void Start()
         {
@@ -96,13 +96,12 @@ namespace UME.Systems
 
             if (!string.IsNullOrEmpty(data.minionPrefabKey))
             {
-                var handle = Addressables.InstantiateAsync(data.minionPrefabKey, position, Quaternion.identity);
-                handle.Completed += h =>
+                Addressables.InstantiateAsync(data.minionPrefabKey, position, Quaternion.identity).Completed += h =>
                 {
                     if (h.Status == AsyncOperationStatus.Succeeded)
                     {
                         GameObject minionObj = h.Result;
-                        spawnHandles[minionObj] = h;
+                        //spawnHandles[minionObj] = h;
                         InitMinion(minionObj, data, path, wave);
                     }
                     else
@@ -126,21 +125,12 @@ namespace UME.Systems
 
         private void ReleaseMinion(GameObject minionObj)
         {
-            if (spawnHandles.TryGetValue(minionObj, out var handle))
-            {
-                spawnHandles.Remove(minionObj);
-                Addressables.ReleaseInstance(handle);
-            }
-        }
+            // if (spawnHandles.TryGetValue(minionObj, out var handle))
+            // {
+            //    spawnHandles.Remove(minionObj);
+            //    Addressables.ReleaseInstance(handle);
+            // }
 
-        private void OnDestroy()
-        {
-            // Release any remaining handles when the spawner is destroyed.
-            foreach (var pair in spawnHandles)
-            {
-                Addressables.ReleaseInstance(pair.Value);
-            }
-            spawnHandles.Clear();
         }
     }
 }
