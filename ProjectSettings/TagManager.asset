@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!141 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Hero
+  - Minion
+  - Tower
+  - Projectile
+  - ResourceNode
+  - MapTile
+  - SpawnPoint
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Units
+  - Heroes
+  - Minions
+  - Towers
+  - Terrain
+  - Projectiles
+  - Fog
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: World
+    uniqueID: 1
+    locked: 0
+  - name: Units
+    uniqueID: 2
+    locked: 0
+  - name: UI
+    uniqueID: 3
+    locked: 0
+  - name: Overlay
+    uniqueID: 4
+    locked: 0
